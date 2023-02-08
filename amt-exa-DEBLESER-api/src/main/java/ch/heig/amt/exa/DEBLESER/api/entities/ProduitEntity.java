@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "Produits")
 public class ProduitEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "prd_num")
     private int prd_num;
 
     @Column(name = "description")
@@ -20,8 +20,6 @@ public class ProduitEntity {
 
     @Column(name = "vil_num")
     private int vil_num;
-
-
 
     public void setPrd_num(int id) {
         this.prd_num = id;

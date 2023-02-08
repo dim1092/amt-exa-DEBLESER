@@ -96,7 +96,7 @@ paths:
         content:
           'application/json':
             schema:
-              $ref: '#/components/schemas/Ville'
+              $ref: '#/components/schemas/Produit'
       responses:
         '201':
           description: produit crée
