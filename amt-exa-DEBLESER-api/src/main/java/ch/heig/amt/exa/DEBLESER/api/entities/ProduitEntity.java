@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity(name = "Produit")
 @Table(name = "Produits")
-public class Produit {
+public class ProduitEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int prd_num;
@@ -13,13 +13,15 @@ public class Produit {
     private String description;
 
     @Column(name = "poids")
-    private String poids;
+    private int poids;
 
     @Column(name = "status_livraison")
     private String status_livraison;
 
     @Column(name = "vil_num")
-    private String vil_num;
+    private int vil_num;
+
+
 
     public void setPrd_num(int id) {
         this.prd_num = id;
@@ -38,11 +40,11 @@ public class Produit {
         this.description = description;
     }
 
-    public String getPoids() {
+    public int getPoids() {
         return poids;
     }
 
-    public void setPoids(String poids) {
+    public void setPoids(int poids) {
         this.poids = poids;
     }
 
@@ -54,11 +56,11 @@ public class Produit {
         this.status_livraison = status_livraison;
     }
 
-    public String getVil_num() {
+    public int getVil_num() {
         return vil_num;
     }
 
-    public void setVil_num(String vil_num) {
+    public void setVil_num(int vil_num) {
         this.vil_num = vil_num;
     }
 }
