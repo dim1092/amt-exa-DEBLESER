@@ -1,0 +1,168 @@
+openapi: '3.0.3'
+info:
+  description: Api Documentation
+  version: '1.0'
+  title: Api Documentation
+servers:
+  - url: 'http://localhost:9090/api'
+tags:
+  - name: Villes-end-point
+    description: Gestion des villes
+paths:
+  /villes:
+    get:
+      tags:
+        - Villes-end-point
+      summary: Obtient une liste de toutes les villes
+      operationId: getVilles
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ville'
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - Villes-end-point
+      summary: Ajoute une nouvelle ville
+      operationId: addVille
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Ville'
+      responses:
+        '201':
+          description: ville crée
+          headers:
+            Location:
+              description: URL de la ville crée
+              schema:
+                type: string
+                format: uri
+  /villes/{id}:
+    get:
+      tags:
+        - Villes-end-point
+      summary: Obtient une ville
+      operationId: getVille
+      parameters:
+        - name: id
+          in: path
+          description: numéro de la ville à obtenir
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Ville'
+        '404':
+          description: Not Found
+      deprecated: false
+  #Produit
+  /produits:
+    get:
+      tags:
+        - Produits-end-point
+      summary: Obtient une liste de touts les produits
+      operationId: getProduits
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Produit'
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - Produits-end-point
+      summary: Ajoute un nouveau produit
+      operationId: addProduit
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Ville'
+      responses:
+        '201':
+          description: produit crée
+          headers:
+            Location:
+              description: URL du produit crée
+              schema:
+                type: string
+                format: uri
+  /produits/{id}:
+    get:
+      tags:
+        - Produits-end-point
+      summary: Obtient un produit
+      operationId: getProduit
+      parameters:
+        - name: id
+          in: path
+          description: numéro du produit à obtenir
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Produit'
+        '404':
+          description: Not Found
+      deprecated: false
+components:
+  schemas:
+    Ville:
+      description: toutes les caractéristiques d'une ville
+      type: object
+      properties:
+        nom:
+          description: nom de la ville
+          type: string
+        vil_num:
+          description: numéro auto-incrémenté de la citation
+          type: integer
+          format: int32
+      title: Ville
+    Produit:
+      description: toutes les caractéristiques d'un produit
+      type: object
+      properties:
+        description:
+          description: description du produit
+          type: string
+        poids:
+          description: poids du produit
+          type: integer
+        status_livraison:
+          description: status ded la livraison
+          type: string
+        vil_num:
+          description: status ded la livraison
+          type: integer
+          format: int32
+        prd_num:
+          description: numéro auto-incrémenté du produit
+          type: integer
+          format: int32
+      title: Produit
